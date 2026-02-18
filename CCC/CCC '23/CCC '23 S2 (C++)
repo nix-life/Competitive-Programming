@@ -1,0 +1,61 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <climits>
+#include <cmath>
+#include <algorithm>
+
+int main() {
+    int n;
+    std::cin >> n;
+
+    std::vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
+    }
+
+    long long INF = 1000000000000000000LL;
+    std::vector<long long> ans(n + 1, INF);
+
+    for (int center = 0; center < n; center++) {
+        int left = center;
+        int right = center;
+        long long asym = 0;
+
+        while (left >= 0 && right < n) {
+            int length = right - left + 1;
+            ans[length] = std::min(ans[length], asym);
+
+            left--;
+            right++;
+
+            if (left >= 0 && right < n) {
+                asym += std::abs(a[left] - a[right]);
+            }
+        }
+    }
+
+    for (int center = 0; center < n - 1; center++) {
+        int left = center;
+        int right = center + 1;
+        long long asym = 0;
+
+        while (left >= 0 && right < n) {
+            asym += std::abs(a[left] - a[right]);
+            int length = right - left + 1;
+
+            ans[length] = std::min(ans[length], asym);
+
+            left--;
+            right++;
+        }
+    }
+
+    for (int i = 1; i <= n; i++) {
+        if (i > 1) std::cout << " ";
+        std::cout << ans[i];
+    }
+    std::cout << "\n";
+
+    return 0;
+}
