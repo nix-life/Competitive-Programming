@@ -1,0 +1,32 @@
+t = int(input())
+
+for i in range(t):
+    n = int(input())
+
+    mountain = []
+    x = 1
+
+    for j in range(n):
+        mountain.append(int(input()))
+
+    branch = []
+
+    flag = False 
+
+    while x <= n:
+        if mountain and mountain[-1] == x:
+            mountain.pop()
+            x+=1
+        elif branch and branch[-1] == x:
+            branch.pop()
+            x+=1
+        elif mountain:
+            branch.append(mountain.pop())
+        else:
+            flag = True
+            break
+
+    if not flag:
+        print("Y")
+    else:
+        print("N")
