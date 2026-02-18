@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <unordered_set>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    vector<vector<int>> comp(n + 1);
+
+    for (int i = 0; i < m; i++) {
+        int a, b;
+        cin >> a >> b;
+        comp[a].push_back(b);
+    }
+
+    auto bfs = [&](int start, int target) -> bool {
+        queue<int> q;
+        unordered_set<int> visited;
+        q.push(start);
+        visited.insert(start);
+
+        while (!q.empty()) {
+            int cur = q.front();
+            q.pop();
+
+            if (cur == target) {
+                return true;
+            }
+
+            for (int nxt : comp[cur]) {
+                if (visited.find(nxt) == visited.end()) {
+                    visited.insert(nxt);
+                    q.push(nxt);
+                }
+            }
+        }
+        return false;
+    };
+
+    int p, q;
+    cin >> p >> q;
+
+    if (bfs(p, q)) {
+        cout << "yes\n";
+    } else if (bfs(q, p)) {
+        cout << "no\n";
+    } else {
+        cout << "unknown\n";
+    }
+
+    return 0;
+}
