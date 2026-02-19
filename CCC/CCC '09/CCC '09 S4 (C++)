@@ -1,0 +1,73 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <tuple>
+#include <limits>
+
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n, m;
+    cin >> n >> m;
+
+    vector<vector<pair<int, int>>> adj(n + 1);
+
+    for (int i = 0; i < m; i++) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        adj[a].emplace_back(b, c);
+        adj[b].emplace_back(a, c);
+    }
+
+    auto dijkstra = [&](int start) {
+        const long long INF = 1000000000000000000LL;
+        vector<long long> dist(n + 1, INF);
+        dist[start] = 0;
+
+        priority_queue<pair<long long, int>, vector<pair<long long, int>>, greater<>> pq;
+        pq.emplace(0, start);
+
+        while (!pq.empty()) {
+            auto [cur_dist, u] = pq.top();
+            pq.pop();
+
+            if (cur_dist > dist[u]) continue;
+
+            for (auto& [v, w] : adj[u]) {
+                long long new_dist = dist[u] + w;
+                if (new_dist < dist[v]) {
+                    dist[v] = new_dist;
+                    pq.emplace(new_dist, v);
+                }
+            }
+        }
+        return dist;
+    };
+
+    int k;
+    cin >> k;
+    vector<pair<int, int>> shops(k);
+    for (int i = 0; i < k; i++) {
+        cin >> shops[i].first >> shops[i].second;
+    }
+
+    int destination;
+    cin >> destination;
+
+    vector<long long> dist = dijkstra(destination);
+
+    long long answer = numeric_limits<long long>::max();
+
+    for (auto& [city, price] : shops) {
+        if (dist[city] < numeric_limits<long long>::max()) {
+            answer = min(answer, dist[city] + price);
+        }
+    }
+
+    cout << answer << "\n";
+
+    return 0;
+}
