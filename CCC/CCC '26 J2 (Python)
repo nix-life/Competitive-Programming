@@ -1,0 +1,9 @@
+j = []
+for i in range(5):
+    j.append(int(input()))
+
+d = int(input())
+
+j.sort()
+average = (j[1] + j[2] + j[3]) * d
+print(average)
