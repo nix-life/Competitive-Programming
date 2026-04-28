@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int J;
+    cin >> J;
+
+    int count = 0;
+
+    for (int a = 1; a < J; a++) {
+        for (int b = a + 1; b < J; b++) {
+            for (int c = b + 1; c < J; c++) {
+                count++;
+            }
+        }
+    }
+
+    cout << count << endl;
+}
