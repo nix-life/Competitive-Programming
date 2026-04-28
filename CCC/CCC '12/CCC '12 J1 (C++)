@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n, m;
+    cin >> n >> m;
+    int diff = m-n;
+
+    if (diff <= 0) {
+        cout << "Congratulations, you are within the speed limit!";
+    } else if (0 < diff && diff <= 20) {
+        cout << "You are speeding and your fine is $100.";
+    } else if (20 < diff && diff <= 30) {
+        cout << "You are speeding and your fine is $270.";
+    } else {
+        cout << "You are speeding and your fine is $500.";
+    }
+}
