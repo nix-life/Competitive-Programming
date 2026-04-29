@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+ 
+using namespace std;
+ 
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+ 
+    int n;
+    cin >> n;
+ 
+    vector<int> s(n-1);
+    for (int i = 0; i < n-1; i++) {
+        int x;
+        cin >> x;
+        s[i] = x;
+    }
+ 
+    sort(s.begin(), s.end());
+ 
+    for (int i = 0; i < n-1; i++) {
+        if (s[i] != i+1) {
+            cout << i+1;
+            return 0;
+            break;
+        }
+    }
+ 
+    cout << n;
