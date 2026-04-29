@@ -1,0 +1,21 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n, m, o, p;
+    cin >> n >> m >> o >> p;
+
+    if (n == m && m == o && o == p) {
+        cout << "Fish At Constant Depth";
+    } else if (n-m > 0 && m-o > 0 && o-p > 0) {
+        cout << "Fish Diving";
+    } else if (n-m < 0 && m-o < 0 && o-p < 0) {
+        cout << "Fish Rising";
+    } else {
+        cout << "No Fish";
+    }
+}
