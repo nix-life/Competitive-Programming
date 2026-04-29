@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    string s;
+    int max_length = 0;
+
+    cin >> s;
+    char last = ' ';
+
+    int current_length = 0;
+    for (char& i : s) {
+        if (last != i) {
+            current_length = 1;
+        } else {
+            current_length++;
+        }
+        last = i;
+        max_length = max(max_length, current_length);
+    }
+    cout << max_length;
+}
