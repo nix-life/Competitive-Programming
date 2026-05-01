@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    string s;
+    cin >> s;
+    int distinct = 0;
+    unordered_map<char, int> x;
+    for (char& i : s) {
+        if (!x.contains(i)) {
+            distinct++;
+            x[i] = 1;
+        } 
+    }
+    if (distinct % 2 == 0) cout << "CHAT WITH HER!";
+    else cout << "IGNORE HIM!";
+}
