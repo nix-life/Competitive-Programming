@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    string text;
+    cin >> text;
+    int num_high = 0;
+    int num_low = 0;
+
+    for (auto& i : text) {
+        if (i != tolower(i)) num_high++;
+        else num_low++;
+    }
+
+    if (num_high > num_low) {
+        transform(text.begin(), text.end(), text.begin(), ::toupper);
+        cout << text;
+    } else {
+        transform(text.begin(), text.end(), text.begin(), ::tolower);
+        cout << text;
+    }
+}
