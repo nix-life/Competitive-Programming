@@ -1,0 +1,26 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+
+    vector<int> x {1, 2, 2, 3, 3, 3, 2, 2, 1, 1};
+    /*
+    1: 10
+    2: 20, 11
+    3: 30, 21
+    4: 40, 31, 22
+    5: 50, 41, 32
+    6: 51, 42, 33
+    7: 52, 43
+    8: 53, 44
+    9: 54
+    10: 55
+    */
+    cout << x[n-1];
+}
