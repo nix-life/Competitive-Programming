@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+
+    int top = 0;
+    int top2 = 0;
+    string tops = "";
+    string top2s = "";
+
+    vector<string> x(n);
+    vector<int> r(n);
+    vector<int> s(n);
+    vector<int> d(n);
+
+    for (int i = 0; i < n; i++) {
+        cin >> x[i] >> r[i] >> s[i] >> d[i];
+        int total = 2*r[i] + 3*s[i] + d[i];
+        if (total > top || (total == top && x[i] < tops)) {
+            top = total;
+            tops = x[i];
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (x[i] == tops) continue;
+        int total = 2*r[i] + 3*s[i] + d[i];
+        if (total > top2 || (total == top2 && x[i] < top2s)) {
+            top2 = total;
+            top2s = x[i];
+        }
+    }
+
+    cout << tops << "\n" << top2s;
+}
