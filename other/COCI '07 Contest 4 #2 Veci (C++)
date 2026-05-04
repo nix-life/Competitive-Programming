@@ -1,0 +1,33 @@
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+    string s = to_string(n);
+    unordered_map<char, int> x;
+    for (char& i : s) {
+        x[i]++;
+    }
+    while (true) {
+        unordered_map<char, int> y;
+        n++;
+        string s2 = to_string(n);
+        if (s.length() < s2.length()) {
+            cout << 0;
+            break;
+        }
+        for (char& i : s2) {
+            y[i]++;
+        }
+        if (x == y) {
+            cout << n;
+            break;
+        }
+    }
+
+}
