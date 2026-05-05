@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int a, b, c, d;
+
+    vector<int> burger = {461, 431, 420, 0};
+    vector<int> side = {100, 57, 70, 0};
+    vector<int> drink = {130, 160, 118, 0};
+    vector<int> dessert = {167, 266, 75, 0};
+
+    cin >> a >> b >> c >> d;
+    int total = burger[a-1] + side[b-1] + drink[c-1] + dessert[d-1];
+    cout << "Your total Calorie count is " << total << ".\n";
+
+    return 0;
+}
