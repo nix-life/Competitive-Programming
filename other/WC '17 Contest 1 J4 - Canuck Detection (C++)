@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string x;
+    cin >> x;
+
+    bool a = false, b = false, c = false;
+
+    for (int i = 0; i < x.size(); i++) {
+        if (!a && x[i] == 'o') {
+            a = true;
+        }
+        else if (a && !b && x[i] == 'u') {
+            b = true;
+        }
+        else if (a && b && x[i] == 'r') {
+            c = true;
+            break;
+        }
+    }
+
+    if (a && b && c) cout << "Y" << "\n";
+    else cout << "N" << "\n";
+
+    return 0;
+}
