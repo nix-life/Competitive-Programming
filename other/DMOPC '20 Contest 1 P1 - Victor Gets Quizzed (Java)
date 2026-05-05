@@ -1,0 +1,52 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    static List<List<Integer>>par = new ArrayList<>();
+    static int n;
+    static int ans = 0;
+ 
+    public static void main(String[] args) throws IOException{
+      int count = readInt();
+      for (int i = 0; i < count; i++) {
+          String s = readLine();
+          boolean c = false;
+          boolean m = false;
+          for (int z = 0; z < 5; z++) {
+              if (s.charAt(z) == 'C') {
+              c = true;
+              } else if (s.charAt(z) == 'M') {
+              m = true;
+              }
+          }
+          if (m && c) {
+              System.out.println("NEGATIVE MARKS");
+          } else if (m || c) {
+              System.out.println("FAIL");
+          } else {
+              System.out.println("PASS");
+          }
+      }
+    }
+    static String next () throws IOException {
+        while (st == null || ! st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong () throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt () throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble () throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter () throws IOException {
+        return next().charAt(0);
+    }  
+    static String readLine () throws IOException {
+        return br.readLine().trim();
+    }
+}
