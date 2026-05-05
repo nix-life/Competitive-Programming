@@ -1,0 +1,47 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    public static boolean isPrime(int n) {
+  	    if (n == 1) return false;
+        if (n == 3) return true;
+        if (n == 2) return true;
+        if (n % 2 == 0 || n % 3 == 0) return false;
+        for (int i = 5; i * i <= n; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
+	}
+    public static void main(String[] args) throws IOException{
+        for (int i = 0; i < 5; i++) {
+            int n = readInt();
+            int t = 0;
+            for (int j = 0; j <=n; j++) {
+                if (isPrime(j)) t+=j;
+            }
+            System.out.println(t);
+        }
+    } static String next () throws IOException {
+        while (st == null || ! st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong () throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt () throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble () throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter () throws IOException {
+        return next().charAt(0);
+    }  
+    static String readLine () throws IOException {
+        return br.readLine().trim();
+    }
+}
