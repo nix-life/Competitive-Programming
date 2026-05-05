@@ -1,0 +1,44 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer st;
+    public static void main(String[] args) throws IOException {
+        int n = readInt();
+        char[] abc = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+        int[] x = new int[26];
+        for (int i = 0; i < n; i++) {
+            String s = next();
+            for (int j = 0; j < 26; j++) {
+                if (s.charAt(0)==abc[j]) x[j]++;
+            }
+        }
+        boolean flag = true;
+        for (int i = 0; i < 26; i++) {
+            if (x[i]>=5) {
+                System.out.print(abc[i]);
+                flag = false;
+            }
+        }
+        if (flag) System.out.println("PREDAJA");
+    } static String next () throws IOException {
+        while (st == null || ! st.hasMoreTokens())
+            st = new StringTokenizer(br.readLine().trim());
+        return st.nextToken();
+    }
+    static long readLong () throws IOException {
+        return Long.parseLong(next());
+    }
+    static int readInt () throws IOException {
+        return Integer.parseInt(next());
+    }
+    static double readDouble () throws IOException {
+        return Double.parseDouble(next());
+    }
+    static char readCharacter () throws IOException {
+        return next().charAt(0);
+    }  
+    static String readLine () throws IOException {
+        return br.readLine().trim();
+    }
+}
