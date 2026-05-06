@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    string s;
+
+    while (true) {
+        cin >> s;
+        if (s == "quit!") break;
+
+        if (s.length() > 4) {
+            vector<char> vowels = {'a', 'e', 'i', 'o', 'u', 'y'};
+            if (s[s.length()-1] == 'r' && s[s.length()-2] == 'o') {
+                if (find(vowels.begin(), vowels.end(), s[s.length()-3]) == vowels.end()) {
+                    s = s.substr(0, s.length()-2) + "our";
+                }
+            }
+        }
+
+        if (s == "quit!") break;
+        cout << s << "\n";
+    }
+
+    return 0;
+}
