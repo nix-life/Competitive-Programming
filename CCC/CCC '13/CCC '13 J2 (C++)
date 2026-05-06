@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+/*
+I, O, S, H, Z, X, and N
+*/
+
+int main() {
+    int num = 0;
+    string s;
+    cin >> s;
+
+    for (char& i : s) {
+        if (i == 'I' || i == 'O' || i == 'S' || i == 'H' || i == 'Z' || i == 'X' || i == 'N') {
+            num++;
+        }
+    }
+
+    if (num == s.size()) cout << "YES";
+    else cout << "NO";
+
+    return 0;
+}
