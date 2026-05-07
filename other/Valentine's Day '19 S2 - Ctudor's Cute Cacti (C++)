@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <unordered_set>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n, q;
+    cin >> n >> q;
+
+    vector<bool> rowFlip(n, false);
+    vector<bool> colFlip(n, false);
+    unordered_set<long long> center;
+
+    auto key = [&](int r, int c) {
+        return (long long)r << 32 | c;
+    };
+
+    while (q--) {
+        int event, r, c;
+        cin >> event >> r >> c;
+        r--; c--;
+
+        if (event == 1) {
+            rowFlip[r] = !rowFlip[r];
+            colFlip[c] = !colFlip[c];
+
+            long long k = key(r, c);
+            if (center.count(k)) center.erase(k);
+            else center.insert(k);
+        } else {
+            bool sad = rowFlip[r] ^ colFlip[c] ^ center.count(key(r, c));
+            cout << (sad ? 1 : 0) << '\n';
+        }
+    }
+}
