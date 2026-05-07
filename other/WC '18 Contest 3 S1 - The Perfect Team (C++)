@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int N, M, K;
+    cin >> N >> M >> K;
+
+    vector<long long> best(K + 1, 0);
+    vector<pair<int, long long>> pokemon;
+
+    for (int i = 0; i < N; i++) {
+        int T;
+        long long L;
+        cin >> T >> L;
+
+        pokemon.push_back({T, L});
+        best[T] = max(best[T], L);
+    }
+
+    long long ans = 0;
+
+    for (int i = 1; i <= K; i++) {
+        ans += best[i];
+    }
+
+    vector<long long> extra;
+
+    for (auto p : pokemon) {
+        int t = p.first;
+        long long l = p.second;
+
+        if (l == best[t]) {
+            best[t] = -1;
+        } else {
+            extra.push_back(l);
+        }
+    }
+
+    sort(extra.rbegin(), extra.rend());
+
+    for (int i = 0; i < M - K; i++) {
+        ans += extra[i];
+    }
+
+    cout << ans << '\n';
+}
