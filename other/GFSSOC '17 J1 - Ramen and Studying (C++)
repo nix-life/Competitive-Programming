@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n, ramen;
+    cin >> n >> ramen;
+
+    unordered_map<string, int> cost = {
+        {"TOK", 1},
+        {"English", 2},
+        {"Chemistry", 3},
+        {"Math", 4}
+    };
+
+    int completed = 0;
+    for (int i = 0; i < n; i++) {
+        string course;
+        cin >> course;
+        ramen -= cost[course];
+        if (ramen < 0) break;
+        completed++;
+    }
+
+    if (completed == n) {
+        cout << "YEA BOI\n";
+    } else {
+        cout << "Go to Metro\n";
+        cout << completed << "\n";
+    }
+
+    return 0;
+}
