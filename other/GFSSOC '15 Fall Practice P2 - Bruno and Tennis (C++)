@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+
+    bool possible = true;
+    bool saw_lob = false;
+
+    for (int i = 0; i < n / 2; i++) {
+        string a, b;
+        cin >> a >> b;
+
+        if (a == "lob") {
+            saw_lob = true;
+            if (b != "lob") {
+                possible = false;
+            }
+        } else {
+            if (b == "lob") {
+                possible = false;
+            }
+        }
+    }
+
+    if (!saw_lob) {
+        cout << "Not enough information";
+    } else if (possible) {
+        cout << "Possible Bruno";
+    } else {
+        cout << "BruNO";
+    }
+
+    return 0;
+}
