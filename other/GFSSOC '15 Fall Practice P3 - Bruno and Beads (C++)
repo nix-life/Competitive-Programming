@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+
+    set<char> seen;
+    char last = s[0];
+    seen.insert(last);
+
+    for (int i = 1; i < n; i++) {
+        if (s[i] != last) {
+            if (seen.count(s[i])) {
+                cout << "FIX YOUR BEADS!\n";
+                return 0;
+            }
+            seen.insert(s[i]);
+            last = s[i];
+        }
+    }
+
+    cout << "Organized\n";
+    return 0;
+}
