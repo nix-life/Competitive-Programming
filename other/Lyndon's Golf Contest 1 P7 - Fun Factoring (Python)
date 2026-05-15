@@ -1,0 +1,2 @@
+n=i=int(input())
+while i:n%i or print(i);i=n//(n//i+1)
