@@ -1,0 +1,50 @@
+/*
+ID: 349042127
+TASK: gift1
+LANG: C++                 
+*/
+
+#include <bits/stdc++.h>
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    ofstream fout ("gift1.out");
+    ifstream fin ("gift1.in");
+
+    int np;
+    fin >> np;
+    unordered_map<string, int> members(np);
+    vector<string> order(np);
+    for (int i = 0; i < np; i++) {
+        string s;
+        fin >> s;
+        members[s] = 0;
+        order[i] = s;
+    }
+    //
+
+    for (int i = 0; i < np; i++) {
+        string s;
+        fin >> s;
+        int a, b;
+        fin >> a >> b;
+        if (b == 0) continue;
+        members[s] -= a;
+        members[s] += a%b; 
+        for (int j = 0; j < b; j++) {
+            string z;
+            fin >> z;
+            members[z] += a/b;
+        }
+    }
+    
+    for (auto const& i : order) {
+        fout << i << " " << members[i] << "\n";
+    }
+
+    return 0;
+}
