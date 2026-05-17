@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+    vector<pair<int, int>> p(n);
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        p[i].first = i+1;
+        p[i].second = x;
+    }
+    std::ranges::sort(p, {}, &std::pair<int, int>::second);
+
+    for (auto& i : p) {
+        cout << i.first << " ";
+    }
+}
