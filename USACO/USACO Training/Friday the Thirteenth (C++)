@@ -1,0 +1,57 @@
+/*
+ID: 349042127
+PROG: friday
+LANG: C++                 
+*/
+
+#include <bits/stdc++.h>
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+bool isLeap(int year) {
+    if (year % 400 == 0) return true;
+    if (year % 100 == 0) return false;
+    return year % 4 == 0;
+}
+
+int daysInMonth(int month, int year) {
+    if (month == 2) return isLeap(year) ? 29 : 28;
+    if (month == 4 || month == 6 || month == 9 || month == 11) return 30;
+    return 31;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    ofstream fout ("friday.out");
+    ifstream fin ("friday.in");
+
+    int N;
+    fin >> N;
+
+    vector<int> count(7, 0);
+
+    int dayOfWeek = 2;
+
+    for (int year = 1900; year < 1900 + N; year++) {
+        for (int month = 1; month <= 12; month++) {
+            int days = daysInMonth(month, year);
+
+            for (int day = 1; day <= days; day++) {
+                if (day == 13) {
+                    count[dayOfWeek]++;
+                }
+                dayOfWeek = (dayOfWeek + 1) % 7;
+            }
+        }
+    }
+
+    for (int i = 0; i < 7; i++) {
+        if (i > 0) fout << " ";
+        fout << count[i];
+    }
+    fout << endl;
+
+    return 0;
+}
