@@ -1,0 +1,28 @@
+/*
+ID: Enter ID here
+PROG: ride
+LANG: C++                 
+*/
+
+#include <bits/stdc++.h>
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    ofstream fout ("ride.out");
+    ifstream fin ("ride.in");
+
+    string a, b;
+    fin >> a >> b;
+    int total_1 = 1;
+    int total_2 = 1;
+    for (auto& i : a) total_1 *= std::tolower(i) - 'a' + 1;
+    for (auto& i : b) total_2 *= std::tolower(i) - 'a' + 1;
+    if (total_1 % 47 == total_2 % 47) fout << "GO\n";
+    else fout << "STAY\n";
+
+    return 0;
+}
