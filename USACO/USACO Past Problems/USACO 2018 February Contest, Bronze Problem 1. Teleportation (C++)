@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    ofstream fout ("teleport.out");
+    ifstream fin ("teleport.in");
+
+    int a, b, x, y;
+    fin >> a >> b >> x >> y;
+    int dist_1 = abs(a-b);
+    int dist_2 = min(abs(a-x)+abs(b-y), abs(a-y)+abs(b-x));
+    fout << min(dist_1, dist_2);
+    return 0;
+}
