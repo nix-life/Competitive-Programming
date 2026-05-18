@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    ifstream fin("buckets.in");
+    ofstream fout("buckets.out");
+
+    pair<int, int> b;
+    pair<int, int> r;
+    pair<int, int> l;
+
+    for (int i = 0; i < 10; i++) {
+        string s;
+        fin >> s;
+        for (int j = 0; j < 10; j++) {
+            if (s[j] == 'B') {
+                b.first = i;
+                b.second = j; 
+            } else if (s[j] == 'R') {
+                r.first = i;
+                r.second = j;
+            } else if (s[j] == 'L') {
+                l.first = i;
+                l.second = j;
+            }
+        }
+    }
+    int dist_br = abs(b.first - r.first) + abs(b.second - r.second);
+    int dist_bl = abs(b.first - l.first) + abs(b.second - l.second);
+    int dist_rl = abs(r.first - l.first) + abs(r.second - l.second);
+  
+    if ((b.first==l.first || b.second==l.second) && dist_bl == dist_br + dist_rl)
+        fout << dist_bl + 1 << "\n";
+    else
+        fout << dist_bl - 1 << "\n";
+
+    return 0;
+}
