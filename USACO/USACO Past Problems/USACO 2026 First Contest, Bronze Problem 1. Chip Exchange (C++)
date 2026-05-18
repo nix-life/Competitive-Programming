@@ -1,1 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
 
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+
+    long long t;
+    cin >> t;
+
+
+    for (long long i = 0; i < t; i++) {
+        long long a, b, ca, cb, f;
+        cin >> a >> b >> ca >> cb >> f;
+
+
+        long long total = b / cb * ca + a;
+        if (total >= f) cout << 0 << "\n";
+        else {
+            long long a0 = f - 1 - total;
+            long long y = cb - 1 - b % cb;
+            if (ca > cb) y += a0;
+            else y += a0 / ca * cb + a0 % ca;
+
+
+            cout << y + 1 << "\n";
+        }
+    }
+}
