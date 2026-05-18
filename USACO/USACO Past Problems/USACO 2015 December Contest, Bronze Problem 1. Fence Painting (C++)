@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    ofstream fout ("paint.out");
+    ifstream fin ("paint.in");
+
+    vector<bool> x(100, false);
+    int a, b, c, d;
+    fin >> a >> b >> c >> d;
+
+    for (int i = a; i < b; i++) x[i] = true;
+    for (int i = c; i < d; i++) x[i] = true;
+
+    int total = 0;
+    for (int i = 0; i < x.size(); i++) if (x[i]) total++;
+    fout << total;
+
+    return 0;
+}
