@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+#include <fstream>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    ofstream fout ("teleport.out");
+    ifstream fin ("teleport.in");
+
+    int b1, b2, s1, s2, g1, g2, p1, p2;
+    cin >> b1 >> b2 >> s1 >> s2 >> g1 >> g2 >> p1 >> p2;
+    int plat = p2-p1;
+    int gold = plat+(g2-g1);
+    int silver = gold+(s2-s1);
+    cout << silver << "\n" << gold << "\n" << plat << "\n";
+    return 0;
+}
