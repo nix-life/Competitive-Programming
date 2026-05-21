@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    string s;
+    cin >> s;
+
+    bool dangerous = false;
+    char current = s[0];
+    int length = 1;
+
+    for (int i = 1; i < s.length(); i++) {
+        if (s[i] == current) {
+            length++;
+        } else {
+            if (length >= 7) dangerous = true;
+            current = s[i];
+            length = 1;
+        }
+    }
+
+    if (length >= 7) dangerous = true;
+
+    cout << (dangerous ? "YES\n" : "NO\n");
+    return 0;
+}
