@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int n;
+    cin >> n;
+
+    int total1 = 0;
+    int total2 = 0;
+    set<int> x;
+    set<int> y;
+    for (int i = n; i > 0; i--) {
+        if (total1 <= total2) {
+            total1 += i;
+            x.insert(i);
+        }
+        else {
+            total2 += i;
+            y.insert(i);
+        }
+    }
+    if (total1 == total2) {
+        cout << "YES\n";
+        cout << x.size() << "\n";
+        for (int i : x) cout << i << " ";
+        cout << "\n";
+        cout << y.size() << "\n";
+        for (int i : y) cout << i << " ";
+    }
+    else cout << "NO\n";
+
+    return 0;
+}
