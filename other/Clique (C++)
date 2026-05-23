@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+long long adj[32];
+int best = 0;
+
+void dfs(int i, long long mask, int sz) {
+    if (sz + (N - i) <= best) return;
+    if (i == N) {
+        best = max(best, sz);
+        return;
+    }
+    dfs(i + 1, mask, sz);
+
+    if ((mask & ~adj[i]) == 0) {
+        dfs(i + 1, mask | (1LL << i), sz + 1);
+    }
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cin >> N >> M;
+    memset(adj, 0, sizeof(adj));
+
+    for (int i = 0; i < M; i++) {
+        int a, b;
+        cin >> a >> b;
+        a--; b--;
+        adj[a] |= (1LL << b);
+        adj[b] |= (1LL << a);
+    }
+
+    dfs(0, 0, 0);
+    cout << best << "\n";
+}
