@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int N, M;
+vector<int> bad;
+long long ans = 0;
+
+void dfs(int i, int mask) {
+    if (i == N) {
+        ans++;
+        return;
+    }
+
+    dfs(i + 1, mask);
+
+    if ((mask & bad[i]) == 0) {
+        dfs(i + 1, mask | (1 << i));
+    }
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cin >> N >> M;
+    bad.assign(N, 0);
+
+    for (int i = 0; i < M; i++) {
+        int a, b;
+        cin >> a >> b;
+        a--; b--;
+        bad[a] |= (1 << b);
+        bad[b] |= (1 << a);
+    }
+
+    dfs(0, 0);
+
+    cout << ans << "\n";
+    return 0;
+}
