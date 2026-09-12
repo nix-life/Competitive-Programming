@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string og, after;
+    cin >> og >> after;
+
+    char quiet = '-';
+    char replaced = '\0';
+    vector<char> x;
+    string alpha = "abcdefghijklmnopqrstuvwxyz";
+
+    for (char i : alpha) {
+        bool in_og = (og.find(i) != string::npos);
+        bool in_after = (after.find(i) != string::npos);
+
+        if (in_og && !in_after) {
+            x.push_back(i);
+        } else if (in_after && !in_og) {
+            replaced = i;
+        }
+    }
+
+    char sil = '\0';
+
+    if (og.length() > after.length()) {
+        string temp_after = after;
+        size_t pos = 0;
+        while ((pos = temp_after.find(replaced, pos)) != string::npos) {
+            temp_after.replace(pos, 1, 1, x[0]);
+            pos += 1;
+        }
+
+        string temp_og = og;
+        pos = 0;
+        while ((pos = temp_og.find(x[1], pos)) != string::npos) {
+            temp_og.erase(pos, 1);
+        }
+
+        if (temp_after == temp_og) {
+            quiet = x[1];
+            sil = x[0];
+        } else {
+            quiet = x[0];
+            sil = x[1];
+        }
+    } else {
+        if (!x.empty()) {
+            sil = x[0];
+        }
+    }
+
+    cout << sil << " " << replaced << "\n";
+    cout << quiet << "\n";
+
+    return 0;
+}
