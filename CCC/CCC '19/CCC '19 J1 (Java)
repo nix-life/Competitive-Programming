@@ -1,0 +1,23 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int[] apples = new int[3];
+		int[] bananas = new int[3];
+		for (int i = 0; i < 3; i++) {
+			apples[i] = sc.nextInt();
+		}
+		for (int i = 0; i < 3; i++) {
+			bananas[i] = sc.nextInt();
+		}
+		if (apples[0] * 3 + apples[1] * 2 + apples[2] > bananas[0] * 3 + bananas[1] * 2 + bananas[2]) {
+			System.out.println("A");
+		} else if (apples[0] * 3 + apples[1] * 2 + apples[2] < bananas[0] * 3 + bananas[1] * 2 + bananas[2]) {
+			System.out.println("B");
+		} else {
+			System.out.println("T");
+		}
+	}
+}
