@@ -1,0 +1,18 @@
+import java.util.Scanner;
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int length  = Integer.parseInt(sc.nextLine());
+		String parkingOne = sc.nextLine();
+		String parkingTwo = sc.nextLine();
+		int equal = 0;
+		for (int i = 0; i < length; i++) {
+			if (parkingOne.charAt(i) == parkingTwo.charAt(i) && parkingOne.charAt(i) == 'C') {
+			equal++;
+			}
+		}
+		System.out.println(equal);
+		sc.close();
+	}
+}
